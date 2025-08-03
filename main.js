@@ -13,13 +13,11 @@ const admins = [
     'Darkoakboat2121'
 ]
 
-const badWords = [
-    'test'
-]
-
 client.on(Events.MessageCreate, (evd) => {
     // if (admins.includes(evd.author.tag)) return
-    if (evd.content === badWords[0]) evd.delete()
+    if (evd.content.toLowerCase().startsWith('hi boatbot')) {
+        evd.reply('Hiya! I\'m Boatbot!')
+    }
 })
 
 const BOT_KEY = process.env.BOT_KEY

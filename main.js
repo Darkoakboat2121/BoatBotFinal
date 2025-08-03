@@ -26,13 +26,23 @@ client.on(Events.MessageCreate, (evd) => {
         } else {
             lastMessages.set(userID, content)
         }
+
+        if (content.includes('https://discord.com/invite')) {
+            evd.delete()
+            evd.author.send('Advertisements aren\'t allowed here')
+        }
+
+        if (content.includes('@everyone')) {
+            evd.delete()
+            evd.author.send('Don\'t ping everyone!')
+        }
     }
 
     if (content.toLowerCase().startsWith('hi boatbot')) {
         evd.reply('Hiya! I\'m Boatbot!')
     }
     if (content.toLowerCase().startsWith('wsg boatbot')) {
-        
+        evd.reply('I\'m sailing lol')
     }
 })
 

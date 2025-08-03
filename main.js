@@ -21,4 +21,4 @@ client.on(Events.MessageCreate, (evd) => {
     if (evd.content === badWords[0]) evd.delete()
 })
 
-client.login('BOT_KEY')
+client.login(BOT_KEY)

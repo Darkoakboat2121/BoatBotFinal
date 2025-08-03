@@ -1,5 +1,6 @@
 import { Client, Events, GatewayIntentBits, REST, Routes } from "discord.js"
 import 'dotenv'
+import express from 'express'
 
 const client = new Client({
     intents: [
@@ -48,3 +49,12 @@ client.on(Events.MessageCreate, (evd) => {
 
 const BOT_KEY = process.env.BOT_KEY
 client.login(BOT_KEY)
+
+
+const app = express()
+app.get('/', (req, res) => {
+    res.send('Boatbot Online!')
+})
+app.listen(3000, () => {
+    console.log('Online on port 3000')
+})

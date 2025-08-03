@@ -13,10 +13,26 @@ const admins = [
     'Darkoakboat2121'
 ]
 
+const lastMessages = new Map()
+
 client.on(Events.MessageCreate, (evd) => {
-    // if (admins.includes(evd.author.tag)) return
-    if (evd.content.toLowerCase().startsWith('hi boatbot')) {
+    const userID = evd.author.id
+    const content = evd.content.trim()
+
+    if (!admins.includes(evd.author.tag)) {
+        if (lastMessages.get(userID) === content.toLowerCase()) {
+            evd.delete()
+            return
+        } else {
+            lastMessages.set(userID, content)
+        }
+    }
+
+    if (content.toLowerCase().startsWith('hi boatbot')) {
         evd.reply('Hiya! I\'m Boatbot!')
+    }
+    if (content.toLowerCase().startsWith('wsg boatbot')) {
+        
     }
 })
 

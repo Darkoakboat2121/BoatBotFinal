@@ -1,4 +1,5 @@
 import { Client, Events, GatewayIntentBits, REST, Routes } from "discord.js"
+import 'dotenv'
 
 const client = new Client({
     intents: [
@@ -21,4 +22,5 @@ client.on(Events.MessageCreate, (evd) => {
     if (evd.content === badWords[0]) evd.delete()
 })
 
+const BOT_KEY = process.env.BOT_KEY
 client.login(BOT_KEY)

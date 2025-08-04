@@ -21,7 +21,7 @@ client.on(Events.MessageCreate, (evd) => {
     const userID = evd.author.id
     const content = evd.content.trim()
 
-    if (!admins.includes(evd.author.tag)) {
+    if (!admins.includes(evd.author.displayName)) {
         if (lastMessages.get(userID) === content.toLowerCase()) {
             evd.delete()
             return
@@ -41,14 +41,16 @@ client.on(Events.MessageCreate, (evd) => {
     }
 
     let uwu = ''
-    if (content.toLocaleUpperCase().includes('uwu')) uwu = ' uwu'
+    if (content.toLocaleUpperCase().includes('uwu')) {
+        uwu = 'uwu'
+    }
 
     if (content.toLowerCase().startsWith('hi boatbot')) {
-        evd.reply('Hiya! I\'m Boatbot!' + uwu)
+        evd.reply(`Hiya! I\'m Boatbot! ${uwu}`)
         return
     }
     if (content.toLowerCase().startsWith('wsg boatbot')) {
-        evd.reply('I\'m sailing lol' + uwu)
+        evd.reply(`I\'m sailing lol ${uwu}`)
         return
     }
 

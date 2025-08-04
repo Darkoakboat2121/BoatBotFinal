@@ -41,7 +41,7 @@ client.on(Events.MessageCreate, (evd) => {
     }
 
     let uwu = ''
-    if (content.toLocaleUpperCase().includes('uwu')) {
+    if (content.toLowerCase().includes('uwu')) {
         uwu = 'uwu'
     }
 

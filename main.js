@@ -6,7 +6,8 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessageReactions
     ]
 })
 
@@ -39,12 +40,18 @@ client.on(Events.MessageCreate, (evd) => {
         }
     }
 
+    let uwu = ''
+    if (content.toLocaleUpperCase().includes('uwu')) uwu = ' uwu'
+
     if (content.toLowerCase().startsWith('hi boatbot')) {
-        evd.reply('Hiya! I\'m Boatbot!')
+        evd.reply('Hiya! I\'m Boatbot!' + uwu)
+        return
     }
     if (content.toLowerCase().startsWith('wsg boatbot')) {
-        evd.reply('I\'m sailing lol')
+        evd.reply('I\'m sailing lol' + uwu)
+        return
     }
+
 })
 
 const BOT_KEY = process.env.BOT_KEY

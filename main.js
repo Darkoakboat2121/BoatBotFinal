@@ -16,6 +16,7 @@ const admins = [
 ]
 
 const lastMessages = new Map()
+let helper = ''
 
 client.on(Events.MessageCreate, (evd) => {
     const userID = evd.author.id
@@ -40,6 +41,20 @@ client.on(Events.MessageCreate, (evd) => {
         }
     }
 
+    if (content.toLowerCase().includes('download')) {
+        evd.reply(`Hiya! If you\'re looking for the download, check #addons ^_^\nMake sure to get both the resource and behavior pack! If you need help, feel free to reply to this message with "help"`).then((revd) => {
+            helper = revd.id
+        })
+        return
+    }
+
+    if (
+        (evd.reference && evd.reference.messageId === helper && content.toLowerCase().includes('help')) || 
+        (content.toLowerCase().includes('help') && content.toLowerCase().includes('boatbot'))
+    ) {
+        evd.reply(`If your issue is related to realms, try deleting the pack and reinstalling. If your issue is related to the pack not working after an update, the pack most likely needs an update.`)
+    }
+
     let uwu = ''
     if (content.toLowerCase().includes('uwu')) {
         uwu = 'uwu'
@@ -53,6 +68,7 @@ client.on(Events.MessageCreate, (evd) => {
         evd.reply(`I\'m sailing lol ${uwu}`)
         return
     }
+
 
 })
 

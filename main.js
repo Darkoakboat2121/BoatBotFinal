@@ -22,6 +22,8 @@ client.on(Events.MessageCreate, (evd) => {
     const userID = evd.author.id
     const content = evd.content.trim()
 
+    if (userID === client.user.id) return
+
     if (!admins.includes(evd.author.displayName)) {
         if (lastMessages.get(userID) === content.toLowerCase()) {
             evd.delete()

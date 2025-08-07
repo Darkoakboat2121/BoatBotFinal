@@ -12,7 +12,8 @@ const client = new Client({
 })
 
 const admins = [
-    'Darkoakboat2121'
+    '1234210579649138751', //Noobslayer64354
+    '1012906941556723722',  //Darkoakboat2121
 ]
 
 const lastMessages = new Map()
@@ -24,7 +25,7 @@ client.on(Events.MessageCreate, (evd) => {
 
     if (userID === client.user.id) return
 
-    if (!admins.includes(evd.author.displayName)) {
+    if (!admins.includes(userID)) {
         if (lastMessages.get(userID) === content.toLowerCase()) {
             evd.delete()
             return
@@ -34,7 +35,7 @@ client.on(Events.MessageCreate, (evd) => {
 
         if (content.includes('https://discord.com/invite')) {
             evd.delete()
-            evd.author.send('Advertisements aren\'t allowed here')
+            evd.author.send('Advertisements aren\'t allowed here! If you\'re a partner use https://discord.com/channels/1234534590341714003/1402831538470654128')
         }
 
         if (content.includes('@everyone')) {
@@ -44,7 +45,7 @@ client.on(Events.MessageCreate, (evd) => {
     }
 
     if (content.toLowerCase().includes('download')) {
-        evd.reply(`Hiya! If you\'re looking for the download, check #addons ^_^\nMake sure to get both the resource and behavior pack! If you need help, feel free to reply to this message with "help"`).then((revd) => {
+        evd.reply(`Hiya! If you\'re looking for the download, check https://discord.com/channels/1234534590341714003/1250953326934102057 ^_^\nMake sure to get both the resource and behavior pack! If you need help, feel free to reply to this message with "help"`).then((revd) => {
             helper = revd.id
         })
         return
@@ -54,7 +55,7 @@ client.on(Events.MessageCreate, (evd) => {
         (evd.reference && evd.reference.messageId === helper && content.toLowerCase().includes('help')) || 
         (content.toLowerCase().includes('help') && content.toLowerCase().includes('boatbot'))
     ) {
-        evd.reply(`If your issue is related to realms, try deleting the pack and reinstalling. If your issue is related to the pack not working after an update, the pack most likely needs an update.`)
+        evd.reply(`If your issue is related to realms:\n* Try deleting the pack and reinstalling.\n* Try clearing your MC cache.\n* Try applying the pack to a world and uploading the world to realms.\nIf your issue is related to the pack not working after an update, the pack most likely needs an update.`)
     }
 
     let uwu = ''
